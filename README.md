@@ -29,7 +29,7 @@ component.
 
 ## Steps
 
-1. Using the example in our React Forms [markdown](../../../react-forms#forms-in-react), set up a `formState` for the form element in `Validator.js`. 
+1. Using the example in our React Forms [markdown](../../../react-forms#forms-in-react), set up a state variable `formState` with `useState` for the form element in `Validator.js`. 
 1. Add a methods for handling each input's onChange event.
 1. Add a method to handle the form submission. Remember to **prevent the default** behavior of a form being submitted.
 1. Display a message if the user's inputs are valid or invalid.
