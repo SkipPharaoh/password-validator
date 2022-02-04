@@ -5,7 +5,7 @@ function Validator () {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
-  const [valid, setValid] = useState("")
+  const [valid, setValid] = useState("Passwords Must Match")
 
   const HandleUsernameChange = (evt) => {
     console.log(evt.target.value)
@@ -31,6 +31,7 @@ function Validator () {
     setUsername("")
     setPassword("")
     setPasswordConfirm("")
+    setValid("Passwords Must Match")
   }
 
   const ValidMessage = () => {
@@ -41,8 +42,6 @@ function Validator () {
       setValid("Valid Entry")
     } else if (password.length < num || password.length < num){
       setValid("Passwords Must Be More Than 7 Characters")
-    } else {
-      setValid("Passwords Must Match")
     }
   }
 
