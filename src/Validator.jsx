@@ -7,33 +7,33 @@ function Validator () {
   const [passwordConfirm, setPasswordConfirm] = useState("")
   const [valid, setValid] = useState("")
 
-  const handleUsernameChange = (evt) => {
+  const HandleUsernameChange = (evt) => {
     console.log(evt.target.value)
     setUsername(evt.target.value)
   }
   
-  const handlePasswordChange = (evt) => {
+  const HandlePasswordChange = (evt) => {
     console.log(evt.target.value)
     setPassword(evt.target.value)
   }
   
-  const handlePasswordConfirmChange = (evt) =>{
+  const HandlePasswordConfirmChange = (evt) =>{
     // console.log("Button works")
     console.log("This is the password", password)
     setPasswordConfirm(evt.target.value)
   }
 
-  const handleSubmit = (evt) =>{
+  const HandleSubmit = (evt) =>{
     evt.preventDefault()
   }
 
-  const clear = () =>{
+  const Clear = () =>{
     setUsername("")
     setPassword("")
     setPasswordConfirm("")
   }
 
-  const validMessage = () => {
+  const ValidMessage = () => {
     let num = 7
     if (password !== passwordConfirm || password == "" || passwordConfirm == "") {
       setValid("Invalid Entry, Try Again!")
@@ -41,19 +41,21 @@ function Validator () {
       setValid("Valid Entry")
     } else if (password.length < num || password.length < num){
       setValid("Passwords Must Be More Than 7 Characters")
+    } else {
+      setValid("Passwords Must Match")
     }
   }
 
     return (
       <div className="form">
         <h1>Sign Up</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={HandleSubmit}>
           <input 
             type="text"
             placeholder="Username"
             id="username"
             value={username}
-            onChange={handleUsernameChange}
+            onChange={HandleUsernameChange}
           />
           <label htmlFor="username">Username</label>
 
@@ -62,7 +64,7 @@ function Validator () {
             placeholder="Password"
             id="password"
             value={password}
-            onChange={handlePasswordChange}
+            onChange={HandlePasswordChange}
           />
           <label htmlFor="password">Password</label>
 
@@ -71,12 +73,12 @@ function Validator () {
             placeholder="Confirm password"
             id="passwordConfirm"
             value={passwordConfirm}
-            onChange={handlePasswordConfirmChange}
+            onChange={HandlePasswordConfirmChange}
           />
           <label htmlFor="passwordConfirm">Confirm password</label>
 
-          <button type="submit" onClick={validMessage}>Sign Up</button>
-          <button className="cancel" onClick={clear}>Clear Form</button>
+          <button type="submit" onClick={ValidMessage}>Sign Up</button>
+          <button className="cancel" onClick={Clear}>Reset</button>
           <p>{valid}</p>
         </form>
       </div>
