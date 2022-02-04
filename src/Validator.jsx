@@ -5,6 +5,7 @@ function Validator () {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
+  const [valid, setValid] = useState("")
 
   const handleUsernameChange = (evt) => {
     console.log(evt.target.value)
@@ -23,15 +24,26 @@ function Validator () {
   }
 
   const handleSubmit = (evt) =>{
-    if (password === passwordConfirm){
-      alert("Valid Entry!")
-    } else {
-      alert("Passwords Do Not Match! Try Again")
-      setPassword("")
-      setPasswordConfirm("")
-    }
     evt.preventDefault()
   }
+
+  const clear = () =>{
+    setUsername("")
+    setPassword("")
+    setPasswordConfirm("")
+  }
+
+  const validMessage = () => {
+    let num = 7
+    if (password !== passwordConfirm || password == "" || passwordConfirm == "") {
+      setValid("Invalid Entry, Try Again!")
+    } else if ( password === passwordConfirm && password.length >= num || passwordConfirm >= num) {
+      setValid("Valid Entry")
+    } else if (password.length < num || password.length < num){
+      setValid("Passwords Must Be More Than 7 Characters")
+    }
+  }
+
     return (
       <div className="form">
         <h1>Sign Up</h1>
@@ -63,8 +75,9 @@ function Validator () {
           />
           <label htmlFor="passwordConfirm">Confirm password</label>
 
-          <button type="submit">Sign Up</button>
-          <p>Passwords must match.</p>
+          <button type="submit" onClick={validMessage}>Sign Up</button>
+          <button className="cancel" onClick={clear}>Clear Form</button>
+          <p>{valid}</p>
         </form>
       </div>
     );
